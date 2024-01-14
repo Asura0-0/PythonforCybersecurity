@@ -1,3 +1,17 @@
 #!/usr/bin/env python3
 # First example of pinging from Python
-# By 
+# By Aahan 1/14/24
+
+import os
+
+#Assign IP address to a variable
+ip_address = "172.0.0.1"
+
+#build our ping cmd
+ping_cmd = "ping -c 1 -w 1 {0}".format(ip_address)
+
+# execute the ping cmd
+exit_code = os.system(ping_cmd)
+
+# print results
+print(exit_code)
