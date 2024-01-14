@@ -8,7 +8,7 @@ import os
 ip_address = "127.0.0.1"
 
 #build our ping cmd
-ping_cmd = "ping -n 1 -w 1 {0}".format(ip_address)
+ping_cmd = "ping -n 1 -w 1 {0} > NUL 2>&1".format(ip_address)
 
 # execute the ping cmd
 exit_code = os.system(ping_cmd)
