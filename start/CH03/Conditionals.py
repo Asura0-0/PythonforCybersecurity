@@ -7,6 +7,7 @@ day = input("Is today a good day? \n (y/n) ")
 
 #If statment for y
 if day == "y":
-    print("Yes it is")
+    for i in range(10):
+        print("Yes it is")
 else:
     print("Womp womp")
