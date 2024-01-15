@@ -3,8 +3,8 @@
 #By 
 
 #This is my function
-def print_me():
-    print("Hello World")
+def print_me( my_message):
+    print(my_message)
 
 #Calling the functio
-    print_me()
+print_me("This is a function")
