@@ -1,3 +1,12 @@
 #!/usr/bin/env python3
 # example workign with conditionals
-#By 
+#By Aahan 1/14/24
+
+#Ask how day is
+day = input("Is today a good day? \n (y/n) ")
+
+#If statment for y
+if day == "y":
+    print("Yes it is")
+else:
+    print("Womp womp")

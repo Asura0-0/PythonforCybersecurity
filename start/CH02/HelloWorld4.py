@@ -15,6 +15,6 @@ print("Hello", user_name, "\nToday is going to be a great day!")
 #Daring part - user's Age
 user_age = input("What is your age?")
 user_age =int(user_age)
-future_age = user_age+2
+future_age = user_age + 2
 print(f"In 2 years, you will be {future_age} years old")
 
