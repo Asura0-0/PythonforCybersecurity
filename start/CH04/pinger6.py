@@ -14,11 +14,15 @@ def write_log(message):
     now = str(datetime.now()) + '\t'
     message = now +  str(message) + "\n"
     # Open a log file for appending
+    with open(dir_path + "/pinger.log", "a") as f:
+        f.write(message)
+    '''
     f = open(dir_path + "/pinger.log", "a")
     # Write my message wit date/time
     f.write(message)
     # Close file
     f.close()
+    '''
 
 def ping_address(ip_address):
     #find our os
@@ -37,11 +41,16 @@ def ping_address(ip_address):
     return False
 
 # Open file for reading
+with open(dir_path+ "/ips.txt", "r") as f:
+    ip_addresses = f.readlines()
+'''
 f = open(dir_path+ "/ips.txt", "r")
 # Reading file
 ip_addresses = f.readlines()
 # Close file
 f.close
+'''
+
 # Loop through results
 for ip_address in ip_addresses:
     # Cleam up ip address
@@ -54,4 +63,4 @@ for ip_address in ip_addresses:
         print("{0} is online".format(ip_address))
         write_log("{0} is online".format(ip_address))
     else:
-        write_log("{0} \n is OFFLINE".format(ip_address))
+        write_log("{0} is OFFLINE".format(ip_address))
