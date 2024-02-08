@@ -18,8 +18,9 @@ def test_password(alorithm_salt, hashed_password, password_guess):
 
 # Load dictionary file
 dir_path = os.path.dirname(os.path.realpath(__file__))
-f = open(dir_path+ "/top10.txt", "r")
+f = open(dir_path+ "/top1000.txt", "r")
 passwords = f.readlines()
+f.close
 
 # Promt user for Algorithm/salt
 algorithm_salt = input("WHat is the algorithm and salt? ")
@@ -29,6 +30,7 @@ hashed_password = input("what is the full hashed password? ")
 
 # Loop through each password
 for password in passwords:
+    password = password.strip()
     result = test_password(algorithm_salt, hashed_password, password)
     if result:
         print("MAtch found: {0}".format(password))
