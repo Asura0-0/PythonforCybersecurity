@@ -22,15 +22,16 @@ with open("/home/aahan/PythonforCybersecurity/start/CH06/top10million.txt", "r")
 with open("/home/aahan/PythonforCybersecurity/start/CH06/shadow", "r") as f:
     pw = f.readlines()
     hashed = pw[11:]
-
-for password, hash in zip(passwords, hashed):
-    password = password.strip()
-    hash = hash.strip()
-    algorithm_salt = hash[12:27]
-    hashed_password = hash[29:115]
-        
-    result = test_password(algorithm_salt, hashed_password, password)
-    if result:
-        print("MAtch found: {0}".format(password))
-        break
+    
+for hash in hashed:
+    for password in passwords:
+        password = password.strip()
+        hash = hash.strip()
+        algorithm_salt = hash[9:28]
+        hashed_password = hash[9:115]
+            
+        result = test_password(algorithm_salt, hashed_password, password)
+        if result:
+            print("Match found: {0}".format(password))
+            break
 
