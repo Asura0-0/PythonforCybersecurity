@@ -17,30 +17,26 @@ f = open(dir_path+ "/"+ log_file, "r")
 log_lines = f.readlines()
 f.close()
 
-# Prompt for file to analyze
-log_file = input("Which file to analyze? ")
-
-# Open file and load into memory
-with open(log_file, "r") as f:
-    sample_logs = f.readlines()
-
 # Setup regex pattern and empty dictionary
-status_pattern = r'\s(\d{3})\s'
-statusdict = {}
+regex_pat = r"\s(\d{3})\s"
+result_dictionary = {}
 
 # Find match and store in dictionary
-for line in sample_logs:
+for line in log_lines:
     # Search for pattern, and if found move forward
-    m = re.search(status_pattern, line)
+    m = re.search(regex_pat, line)
     if m:
-        client = m.group()
-        # Put access frequency in dictionary
-        if client in statusdict.keys():
-            statusdict[client] += 1
+        status_code = m.group()
+        # store status in dictionary
+        if status_code in result_dictionary.keys():
+            result_dictionary[status_code] += 1
         else:
-            statusdict[client] = 1
+            result_dictionary[status_code] = 1
 
+# print(result_dictionary)
+# for key in result_dictionary.keys():
+#     print("{0} - {1}".format(key, result_dictionary[key]))
 
-# Sort by most frequently accessed
-for w in sorted(statusdict, key=statusdict.get, reverse=False):
-    print(w, statusdict[w])
+# Sort and print most frequent rsult
+for w in sorted(result_dictionary, key=result_dictionary.get, reverse=True):
+    print(w, result_dictionary[w])
