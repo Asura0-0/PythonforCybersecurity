@@ -11,6 +11,7 @@ import re
 log_file = input("which file do you want to scan? ")
 dir_path = os.path.dirname(os.path.realpath(__file__))
 f = open(dir_path+ "/"+ log_file, "r")
+<<<<<<< HEAD
 log_lines = f.readlines()
 f.close()
 
@@ -31,4 +32,16 @@ for line in log_lines:
             result_dictionary[status_code] = 1
 
 print(result_dictionary)
+=======
+
+# setup regex pattern and dictionary
+
+
+# Find match in file an dstore in dictionary
+
+        # Search for pattern, i found, store it
+
+
+
+>>>>>>> b07fbafbe68b0d3bc4d9181d553dc41731796294
 # sort and print most frequent result
