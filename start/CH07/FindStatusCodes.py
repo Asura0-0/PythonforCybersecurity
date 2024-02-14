@@ -2,46 +2,45 @@
 # Script that scans web server logs for status codes
 # Use RegEx to find and report on most frequent status messages
 # By #!/usr/bin/env python3
-# Script that scans web server logs for 404 errors
-# By Aahan 2/13/24
+# Script that scans web server logs for status codes
+# Use RegEx to find and report on most frequent status messages
+# By Ed Goad
+# date: 2/5/2021
 
+#Import Python modules
 import os
 import re
 # prompt for file
 log_file = input("which file do you want to scan? ")
 dir_path = os.path.dirname(os.path.realpath(__file__))
 f = open(dir_path+ "/"+ log_file, "r")
-<<<<<<< HEAD
 log_lines = f.readlines()
 f.close()
 
-# setup regex pattern and dictionary
-reg_pat = r"\s(\d{3})\s"
-result_dictionary = {}
+# Prompt for file to analyze
+log_file = input("Which file to analyze? ")
 
-# Find match in file an dstore in dictionary
-for line in log_lines:
-    # Search for pattern, i found, store it
-    m = re.search(reg_pat, line)
+# Open file and load into memory
+with open(log_file, "r") as f:
+    sample_logs = f.readlines()
+
+# Setup regex pattern and empty dictionary
+status_pattern = r'\s(\d{3})\s'
+statusdict = {}
+
+# Find match and store in dictionary
+for line in sample_logs:
+    # Search for pattern, and if found move forward
+    m = re.search(status_pattern, line)
     if m:
-        status_code = m.group()
-        # Store status in dictionary
-        if status_code in result_dictionary.keys():
-            result_dictionary[status_code] += 1
+        client = m.group()
+        # Put access frequency in dictionary
+        if client in statusdict.keys():
+            statusdict[client] += 1
         else:
-            result_dictionary[status_code] = 1
-
-print(result_dictionary)
-=======
-
-# setup regex pattern and dictionary
+            statusdict[client] = 1
 
 
-# Find match in file an dstore in dictionary
-
-        # Search for pattern, i found, store it
-
-
-
->>>>>>> b07fbafbe68b0d3bc4d9181d553dc41731796294
-# sort and print most frequent result
+# Sort by most frequently accessed
+for w in sorted(statusdict, key=statusdict.get, reverse=False):
+    print(w, statusdict[w])
