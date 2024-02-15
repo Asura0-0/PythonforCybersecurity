@@ -1,11 +1,7 @@
-#!/usr/bin/env python3
-# Script that scans web server logs for status codes
-# Use RegEx to find and report on most frequent status messages
 # By #!/usr/bin/env python3
 # Script that scans web server logs for status codes
 # Use RegEx to find and report on most frequent status messages
-# By Ed Goad
-# date: 2/5/2021
+# By Aahan
 
 #Import Python modules
 import os
