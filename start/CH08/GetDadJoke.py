@@ -1,15 +1,18 @@
 # Created Aahan 2/21/24
 
 import requests
-import json
 
-url = "https://icanhazdadjoke.com/api"
+def get_joke():
+    url = "https://icanhazdadjoke.com/"
+    headers = {
+        "Accept": "application/json"
+    }
+    response = requests.get(url, headers=headers)
+    data = response.json()
+    joke = data['joke']
+    return joke
 
-payload = {}
-headers = {
-  'Accept': 'application/json'
-}
 
-response = requests.request("GET", url, headers=headers, data=payload)
-
-print(response.text)
+joke = get_joke()
+print("Here's a dad joke for you:")
+print(joke)
